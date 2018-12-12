@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 melanie = User.create(username:"lil_macd", email:"melmacd94@gmail.com", password_digest:"password")
-deck1 = Deck.create(name: "Rails")
-card1 = Card.create(title:"Cli", content:"Rails g")
+deck1 = Deck.create(user_id:1, name: "Rails")
+card1 = Card.create(deck_id:1, title:"Cli", content:"Rails g")
