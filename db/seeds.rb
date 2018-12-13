@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-melanie = User.create(username:"lil_macd", email:"melmacd94@gmail.com", password_digest:"password")
+melanie = User.create(username:"lil_macd", email:"melmacd94@gmail.com", password:"password")
 deck1 = Deck.create(user_id:1, name: "Rails")
 card1 = Card.create(deck_id:1, title:"Cli", content:"Rails g")
