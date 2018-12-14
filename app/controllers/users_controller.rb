@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
    # Sign Up
    def create
-     @user = User.create(user_params)
+     @user = User.create!(username:params[:username], email:params[:email], password:params[:password])
      if @user.valid?
        render json: { user: UserSerializer.new(@user) }, status: :created
      else
@@ -20,9 +20,5 @@ class UsersController < ApplicationController
      end
    end
 
-   private
 
-   def user_params
-     params.require(:user).permit(:username, :email, :password)
-   end
 end

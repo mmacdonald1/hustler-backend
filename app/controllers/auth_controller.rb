@@ -1,5 +1,6 @@
 class AuthController < ApplicationController
   def create # POST /login
+    byebug
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       payload = {user: @user.id}
