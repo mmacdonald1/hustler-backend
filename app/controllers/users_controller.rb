@@ -7,7 +7,7 @@ class UsersController < ApplicationController
      token = request.headers['Authentication'].split(' ')[1]
      payload = decode(token)
      current_user = User.find(payload["user"])
-     render json: { user: current_user }, status: :accepted
+     render json: {user: current_user, decks: current_user.decks}, status: :accepted
    end
 
    # Sign Up
