@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-  before_action :find_deck, only [:edit, :update]
+  before_action :find_deck, only: [:edit, :update]
 
   def index
    render json: Deck.all
@@ -11,7 +11,12 @@ class DecksController < ApplicationController
     @deck = Deck.new
   end
   def create
-    @deck = Deck.create(deck_params)
+    @deck = Deck.create!(name: params[:name], user_id: params[:user_id])
+    if @deck.valid?
+      render json: { deck: DeckSerializer.new(@deck) }, status: :created
+    else
+      render json: { error: 'failed to create deck' }, status: :not_acceptable
+    end
   end
   def edit
   end
@@ -26,9 +31,6 @@ class DecksController < ApplicationController
 
   def find_deck
     @deck = Deck.find(params[:id])
-  end
-  def deck_params
-    params.require(:deck).permit(:name)
   end
 
 end
