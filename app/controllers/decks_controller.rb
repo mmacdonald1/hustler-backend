@@ -21,10 +21,15 @@ class DecksController < ApplicationController
   def edit
   end
   def update
-    @deck.update(user_params)
+    @deck.update(name: params[:name], user_id: params[:user_id])
+    if @deck.valid?
+      render json: { deck: DeckSerializer.new(@deck) }, status: :created
+    else
+      render json: { error: 'failed to create deck' }, status: :not_acceptable
+    end
   end
   def destroy
-    Deck.find(params[:id]).destroy
+    render json: Deck.find(params[:id]).destroy
   end
 
   private

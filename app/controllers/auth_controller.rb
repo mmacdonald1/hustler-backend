@@ -2,6 +2,7 @@ class AuthController < ApplicationController
 
   def create # POST /login
     @user = User.find_by(username: params[:username])
+    @decks = @user.decks
     if @user && @user.authenticate(params[:password])
       payload = {user: @user.id}
       token = encode(payload)
@@ -10,9 +11,8 @@ class AuthController < ApplicationController
         message: 'correct username and password',
         token: token,
         error: false,
-        user: {
-          username: @user.username
-        }
+        user: @user,
+        decks: @decks
         }, status: :accepted
     else
       render json: {

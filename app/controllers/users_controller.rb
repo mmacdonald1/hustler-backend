@@ -14,7 +14,17 @@ class UsersController < ApplicationController
    def create
      @user = User.create!(username:params[:username], email:params[:email], password:params[:password])
      if @user.valid?
-       render json: { user: UserSerializer.new(@user) }, status: :created
+       payload = {user: @user.id}
+       token = encode(payload)
+       render json: {
+         message: 'correct username and password',
+         token: token,
+         error: false,
+         user: {
+           username: @user.username,
+           email: @user.email
+         }
+         }, status: :created
      else
        render json: { error: 'failed to create user' }, status: :not_acceptable
      end
