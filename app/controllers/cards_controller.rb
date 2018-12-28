@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   def index
-   render json: Card.all
+   @cards = Card.where(params[:id] == :deck_id)
+   render json: {cards: @cards}
   end
 end

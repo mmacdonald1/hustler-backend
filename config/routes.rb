@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   post '/login', to: 'auth#create'
   get '/profile', to: 'users#profile'
+  get '/decks/:id/cards', to: 'cards#index'
 end

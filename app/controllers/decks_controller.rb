@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-  before_action :find_deck, only: [:edit, :update]
+  before_action :find_deck, only: [:edit, :update, :cards]
 
   def index
    render json: Deck.all
@@ -31,7 +31,6 @@ class DecksController < ApplicationController
   def destroy
     render json: Deck.find(params[:id]).destroy
   end
-
   private
 
   def find_deck
