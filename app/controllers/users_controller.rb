@@ -6,8 +6,8 @@ class UsersController < ApplicationController
      #if the front end has a token, we send back @user
      token = request.headers['Authentication'].split(' ')[1]
      payload = decode(token)
-     current_user = User.find(payload["user"])
-     render json: {user: current_user, decks: current_user.decks}, status: :accepted
+     @user = User.find(payload["user"])
+     render json: {user: UserSerializer.new(@user)}, status: :accepted
    end
 
    # Sign Up
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
          token: token,
          error: false,
          user: {
+           id: @user.id,
            username: @user.username,
            email: @user.email
          }
