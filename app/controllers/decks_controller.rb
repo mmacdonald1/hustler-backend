@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-  before_action :find_deck, only: [:edit, :update, :cards]
+  before_action :find_deck, only: [:edit, :update]
 
   def index
    render json: Deck.all
