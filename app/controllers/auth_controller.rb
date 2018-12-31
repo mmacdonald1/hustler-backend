@@ -11,8 +11,7 @@ class AuthController < ApplicationController
         message: 'correct username and password',
         token: token,
         error: false,
-        user: @user,
-        decks: @decks
+        user: UserSerializer.new(@user),
         }, status: :accepted
     else
       render json: {
