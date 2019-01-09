@@ -1,24 +1,40 @@
-# README
+# Hustler Backend
+A Rails API backend for a notecard app that allows you to create decks of cards and quiz yourself on them. Includes Authentication using JWT and bcrypt.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Live Demo
+Coming soon.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+These instructions will allow you to run this project in your local environment.
 
-* System dependencies
+Clone the repository onto your local machine.
 
-* Configuration
+```
+git clone git@github.com:mmacdonald1/hustler-backend.git
+```
+Navigate into the file folder and install the gemfile.
 
-* Database creation
+```
+cd hustler-backend
+bundle install
+```
+Create, Migrate, and Seed the database.
+```
+rails db:create
+rails db:migrate
+rails db:seed
+```
 
-* Database initialization
+Run the file using rails.
 
-* How to run the test suite
+```
+rails s
+```
+Then, navigate to localhost:3000/user to see the first endpoint,
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Built With
+  * Rails
+  * JWT
+  * Bcrypt
+  * Postgresql
