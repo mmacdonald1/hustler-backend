@@ -2,7 +2,9 @@
 A Rails API backend for a notecard app that allows you to create decks of cards and quiz yourself on them. Includes Authentication using JWT and bcrypt.
 
 ## Live Demo
-Coming soon.
+https://hustler-backend.herokuapp.com/users
+
+There is no home route so you need to go to /users for users, /decks for decks, or /cards for cards.
 
 ## Getting Started
 
